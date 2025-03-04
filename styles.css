@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+h1{
+    text-align: center;
+    margin:1rem  auto;
+    background: linear-gradient(to right, red, rgb(0, 221, 255));
+    color: transparent;
+    -webkit-background-clip: text;
+    padding: 0 0.5rem;
+}
+
+.header{
+    padding: 1rem 0;
+}
+.search{
+    padding: 2rem 1rem;
+}
+
+.movie-div{
+    height: 400px;
+    width: 400px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid white;
+}
+.poster{
+    width: 80%;
+    height: 250px;
+}
+/* p::-webkit-scrollbar {
+    display: none;
+  } */
+   /* p{
+    overflow: hidden;
+   } */
+    .plot{
+        overflow: scroll;
+    }
+    .plot::-webkit-scrollbar {
+        display: none;
+      }
+
