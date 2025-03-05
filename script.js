@@ -10,13 +10,14 @@ form.addEventListener("submit", async (e) => {
 
   // console.log(input.value);
   const movieName = input.value;
-  const response = await fetch(
+  const movieResponse = await fetch(
     `https://api.themoviedb.org/3/search/movie?query=${movieName}&include_adult=false&language=en-US&page=1&api_key=${API_KEY}`
   );
-  const result = await response.json();
+  const movieResult = await movieResponse.json();
   // console.log(result);
-  const movies = result.results;
+  const movies = movieResult.results;
   // console.log(movies);
+
 
   displayAllMovies(movies);
 
@@ -27,7 +28,7 @@ form.addEventListener("submit", async (e) => {
 function displayAllMovies(arr) {
   movieContainer.innerHTML = "";
   let fragment = document.createDocumentFragment();
-  arr.forEach((movie) => {
+  arr.forEach((movie,idx) => {
     console.log(movie);
     // console.log(movie.poster_path);
 
@@ -48,14 +49,21 @@ function displayAllMovies(arr) {
     release.innerText = `Release date : ${movie.release_date}`;
     // console.log(release.innerText);
 
+    const rating = document.createElement("p");
+    rating.innerText = `IMDB rating : ${movie.
+      vote_average} `
+      let star = document.createElement("span");
+      star.innerHTML = `<i class="fa-solid fa-star"></i>`;
+      star.style.color = "yellow";
+      rating.append(star);
+      // console.log(rating.innerText);
+
     const plot = document.createElement("p");
     plot.innerText = `Plot : ${movie.overview}`
     plot.classList.add("plot");
-  
-    console.log(movie);
-    
 
-    movieDiv.append(poster, title, release, plot);
+
+    movieDiv.append(poster, title, release,rating, plot);
     fragment.append(movieDiv);
   });
   movieContainer.append(fragment);
